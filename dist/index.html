@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Elm code playground</title>
+</head>
+<body>
+<div id="main"></div>
+<script src="/app.js"></script>
+</body>
+</html>
+
+<div id="box-html" class="box box-html none" data-type="html" style="width: 31.653%;">
+
+    <div class="powers">
+        <div class="powers-drag-handle" title="Double-click to expand."></div>
+
+        <div class="editor-actions-left">
+            <button id="settings-pane-html" class="button button-medium mini-button settings-nub" data-type="html" title="Open HTML Settings">
+                <svg class="icon-gear">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#gear"></use>
+                </svg>
+            </button>
+
+            <h2 class="box-title" id="html-editor-title"><span class="box-title-name">HTML</span></h2>
+        </div>
+
+        <div class="editor-actions-right">
+            <button class="button mini-button button-medium editor-dropdown-button editor-dropdown-button-html" data-dropdown="#editor-dropdown-html">
+                <svg class="icon-arrow-down-mini">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-down-mini"></use>
+                </svg>
+            </button>
+
+            <ul id="editor-dropdown-html" class="link-list is-dropdown editor-dropdown editor-dropdown-html" data-dropdown-position="css" data-dropdown-type="html">
+
+                <li>
+                    <a href="#0" id="html-tidy-code-button" class="tidy-code-button" data-type="html">
+                        Tidy HTML
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#0" class="view-compiled-button" id="html-view-compiled" data-type="html">
+                        View Compiled HTML
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#0" class="analyze" id="analyze-html" data-type="html">
+                        Analyze HTML
+                    </a>
+                </li>
+
+                <li class="maximize">
+                    <a href="#0">
+                        Maximize HTML Editor
+                    </a>
+                </li>
+
+                <li class="minimize">
+                    <a href="#0">
+                        Minimize HTML Editor
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="code-wrap">
+        <div class="CodeMirror cm-s-default CodeMirror-wrap CodeMirror-simplescroll"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 43px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-simplescroll-horizontal" cm-not-content="true" style="display: none;"><div></div></div><div class="CodeMirror-simplescroll-vertical" cm-not-content="true" style="display: none; bottom: 0px;"><div style="height: 10px; top: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 39px; margin-bottom: -17px; border-right-width: 13px; min-height: 29px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 20.8px;">&nbsp;</div></div><div class="CodeMirror-code"><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 13px; width: 1px; border-bottom: 0px solid transparent; top: 29px;"></div><div class="CodeMirror-gutters" style="height: 42px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div></div></div></div>
+        <div class="error-bar" id="error-bar-html" style="display: none;">
+            <span class="error-icon" data-type="html">
+              !
+            </span>
+        </div>
+    </div>
+
+</div>

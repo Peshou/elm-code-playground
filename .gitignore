@@ -1,2 +1,4 @@
-"target" 
-"elm-stuff" 
+target
+elm-stuff
+.idea
+node_modules
