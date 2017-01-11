@@ -1,7 +1,7 @@
 module Main exposing (..)
 
 import Html exposing (..)
-import Html.Attributes exposing (href, class, style)
+import Html.Attributes exposing ( .. )
 import Material
 import Material.Scheme
 import Material.Button as Button
@@ -58,12 +58,9 @@ view model =
 
 viewBody : Model -> Html Msg
 viewBody model =
-    Button.render Mdl [0] model.mdl
-    [ Button.raised
-    , Button.ripple
-    , Button.colored
-    ]
-    [ text "Click me" ]
+   div [] [
+       textarea [ class "code-textarea", cols 40, rows 10, placeholder "..." ] []
+       ]
 
 -- SUBSCRIPTIONSBuu
 
