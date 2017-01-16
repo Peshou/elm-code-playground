@@ -3,89 +3,78 @@ module Main exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing ( .. )
 import Html.Events exposing (..)
-import Material
-import Material.Scheme
-import Material.Button as Button
-import Material.Layout as Layout
-import Material.Options as Options exposing (css)
+import EditorGroup exposing (..)
 
 -- MODEL
-type alias Model =
+type alias AppModel =
     {
-        mdl :
-            Material.Model
-            -- Boilerplate: model store for any and all Mdl components you use.
+        editorGroupModel: EditorGroup.Model
+
     }
-model : Model
-model =
-        {
-            mdl =
-                Material.model
-                -- Boilerplate: Always use this initial Mdl model store.
-        }
 
--- ACTION, UPDATE
-type Msg
-    = Mdl (Material.Msg Msg)
+initialModel : AppModel
+initialModel =
+    { editorGroupModel = EditorGroup.initialModel
+    }
 
-update : Msg -> Model -> (Model, Cmd Msg)
-update msg model =
-    case msg of
-        Mdl msg_ ->
-            Material.update Mdl msg_ model
+init : ( AppModel, Cmd Msg )
+init =
+    ( initialModel, Cmd.none )
 
 
 
 -- MESSAGES
 
 
+type Msg
+    = EditorGroupMsg EditorGroup.Msg
+
+
 
 -- VIEW
 
-type alias Mdl =
-    Material.Model
 
-view : Model -> Html Msg
+view : AppModel -> Html Msg
 view model =
-    Layout.render Mdl
-        model.mdl
-        [ Layout.fixedHeader
-        , Layout.waterfall True
+    div [] [
+          Html.map EditorGroupMsg (EditorGroup.view model.editorGroupModel)
         ]
-        { header = [ h1 [ style [ ( "padding", "1rem" ) ] ] [ text "Code Playground" ] ]
-        , drawer =  []
-        , tabs = ( [], [] )
-        , main = [ viewBody model ]
-        }
-
-viewBody : Model -> Html Msg
-viewBody model =
-   div [] [
-        editorGroup
-       ]
 
 
-editorGroup : Html msg
-editorGroup =
-   div [ class "editor-group" ] [
-       textarea [ class "code-textarea", cols 40, rows 10, placeholder "HTML" ] [],
-       textarea [ class "code-textarea", cols 40, rows 10, placeholder "CSS" ] [],
-       textarea [ class "code-textarea", cols 40, rows 10, placeholder "JS" ] []
-       ]
-
--- SUBSCRIPTIONSBuu
 
 
-subscriptions : Model -> Sub Msg
+-- UPDATE
+
+
+update : Msg -> AppModel -> ( AppModel, Cmd Msg )
+update msg model =
+    case msg of
+        EditorGroupMsg subMsg ->
+          let
+               ( updatedEditorGroupModel, editorGroupCmd ) =
+              EditorGroup.update subMsg model.editorGroupModel
+          in
+              ( { model | editorGroupModel = updatedEditorGroupModel }, Cmd.map EditorGroupMsg editorGroupCmd )
+
+
+
+
+-- SUBSCRIPTIONS
+
+
+subscriptions : AppModel -> Sub Msg
 subscriptions model =
     Sub.none
 
+
+
 -- MAIN
 
-main : Program Never Model Msg
+
+main : Program Never AppModel Msg
 main =
     program
-        { init = ( model, Cmd.none )
+        { init = init
         , view = view
         , update = update
         , subscriptions = subscriptions
