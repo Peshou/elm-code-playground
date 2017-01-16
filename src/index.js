@@ -2,7 +2,7 @@
 
 require('ace-css/css/ace.css');
 require('font-awesome/css/font-awesome.css');
-
+require('./index.css');
 require('codemirror/lib/codemirror.css');
 require('codemirror/theme/material.css');
 
@@ -13,10 +13,10 @@ require('./index.html');
 
 var Elm = require('./Main.elm');
 
-
-var editor = CodeMirror.fromTextArea(document.getElementsByClassName('code-textarea'), {
-    lineNumbers: true,
-    theme: 'material'
-});
+//
+// var editor = CodeMirror.fromTextArea(document.getElementsByClassName('code-textarea'), {
+//     lineNumbers: true,
+//     theme: 'material'
+// });
 // .embed() can take an optional second argument. This would be an object describing the data we need to start a program, i.e. a userID or some token
 var app = Elm.Main.fullscreen();

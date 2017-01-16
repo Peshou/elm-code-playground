@@ -1,3 +1,7 @@
 body {
     background: grey;
 }
+
+.editor_group .code-textarea {
+    resize: both !important;
+}

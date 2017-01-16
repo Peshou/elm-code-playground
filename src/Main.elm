@@ -2,6 +2,7 @@ module Main exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing ( .. )
+import Html.Events exposing (..)
 import Material
 import Material.Scheme
 import Material.Button as Button
@@ -34,6 +35,7 @@ update msg model =
             Material.update Mdl msg_ model
 
 
+
 -- MESSAGES
 
 
@@ -50,7 +52,7 @@ view model =
         [ Layout.fixedHeader
         , Layout.waterfall True
         ]
-        { header = [ h1 [ style [ ( "padding", "1rem" ) ] ] [ text "Code Playground"  ] ]
+        { header = [ h1 [ style [ ( "padding", "1rem" ) ] ] [ text "Code Playground" ] ]
         , drawer =  []
         , tabs = ( [], [] )
         , main = [ viewBody model ]
@@ -59,7 +61,16 @@ view model =
 viewBody : Model -> Html Msg
 viewBody model =
    div [] [
-       textarea [ class "code-textarea", cols 40, rows 10, placeholder "..." ] []
+        editorGroup
+       ]
+
+
+editorGroup : Html msg
+editorGroup =
+   div [ class "editor-group" ] [
+       textarea [ class "code-textarea", cols 40, rows 10, placeholder "HTML" ] [],
+       textarea [ class "code-textarea", cols 40, rows 10, placeholder "CSS" ] [],
+       textarea [ class "code-textarea", cols 40, rows 10, placeholder "JS" ] []
        ]
 
 -- SUBSCRIPTIONSBuu
