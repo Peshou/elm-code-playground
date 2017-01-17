@@ -13,10 +13,15 @@ require('./index.html');
 
 var Elm = require('./Main.elm');
 
-//
-// var editor = CodeMirror.fromTextArea(document.getElementsByClassName('code-textarea'), {
-//     lineNumbers: true,
-//     theme: 'material'
-// });
-// .embed() can take an optional second argument. This would be an object describing the data we need to start a program, i.e. a userID or some token
-var app = Elm.Main.fullscreen();
+var app = Elm.Main.embed(document.getElementById("main"));
+
+var elements = document.getElementsByClassName('code-textarea');
+for (var i = 0; i < elements.length; ++i) {
+    console.log(elements[i]);
+
+    CodeMirror.fromTextArea((elements[i]), {
+        lineNumbers: true,
+        theme: 'material'
+    });
+}
+
