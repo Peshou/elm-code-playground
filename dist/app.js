@@ -66,13 +66,19 @@
 
 	var Elm = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./Main.elm\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
-	//
-	// var editor = CodeMirror.fromTextArea(document.getElementsByClassName('code-textarea'), {
-	//     lineNumbers: true,
-	//     theme: 'material'
-	// });
-	// .embed() can take an optional second argument. This would be an object describing the data we need to start a program, i.e. a userID or some token
-	var app = Elm.Main.fullscreen();
+	var app = Elm.Main.embed(document.getElementById("main"));
+
+	var elements = document.getElementsByClassName('code-textarea');
+	for (var i = 0; i < elements.length; ++i) {
+	    console.log(elements[i]);
+
+	    CodeMirror.fromTextArea((elements[i]), {
+	        lineNumbers: true,
+	        theme: 'material'
+	    });
+	}
+
+
 
 /***/ },
 /* 2 */
@@ -533,7 +539,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n    background: grey;\n}\n\n.editor_group .code-textarea {\n    resize: both !important;\n}", ""]);
+	exports.push([module.id, "/*body {*/\r\n/*background: grey;*/\r\n/*}*/\r\n\r\n/*.editor_group .code-textarea {*/\r\n/*resize: both !important;*/\r\n/*}*/\r\n\r\n/*.code-result_iframe {*/\r\n/*width: 100%;*/\r\n/*height: auto;*/\r\n/*min-height: 300px;*/\r\n/*-webkit-box-sizing: border-box;*/\r\n/*-moz-box-sizing: border-box;*/\r\n/*box-sizing: border-box;*/\r\n/*}*/\r\n\r\n/* Live Editor Styles */\r\n\r\n* {\r\n    box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    outline: none;\r\n}\r\n\r\nhtml,\r\nbody,\r\n.editor_section {\r\n    height: 100%;\r\n}\r\n\r\nbody {\r\n    background: #eaeaea;\r\n    padding: 0;\r\n    margin: 0;\r\n}\r\n\r\nh1 {\r\n    font-family: 'Source Sans Pro', sans-serif;\r\n    text-align: center;\r\n    color: #777;\r\n    margin: 0;\r\n    font-weight: 200;\r\n}\r\n\r\n.editor_section {\r\n    background: #fff;\r\n    width: 100%;\r\n    min-height: 100%;\r\n    padding: 15px;\r\n    margin: 0;\r\n    box-shadow: rgba(0, 0, 0, .15) 0 15px 50px;\r\n    position: relative;\r\n}\r\n\r\n.editor_buttons {\r\n    text-align: right;\r\n}\r\n\r\n.clearLink {\r\n    top: 15px;\r\n    right: 15px;\r\n    padding: 5px;\r\n    background: #eaeaea;\r\n    color: #777;\r\n    border: 1px solid #cdcdcd;\r\n    border-radius: 3px;\r\n    font-family: 'Source Sans Pro', sans-serif;\r\n    font-size: 10pt;\r\n    text-shadow: rgba(255, 255, 2550.5, 1) 0 1px 2px;\r\n    text-decoration: none;\r\n    outline: none;\r\n}\r\n\r\n.clearLink:hover {\r\n    background: #f0f0f0;\r\n}\r\n\r\n.editor_group .code_textarea {\r\n    font-family: \"Courier New\", Courier, \"Lucida Sans Typewriter\", \"Lucida Typewriter\", monospace;\r\n    width: 32%;\r\n    min-height: 150px;\r\n    margin: 15px 2% 0 0;\r\n    float: left;\r\n    font-size: 10pt;\r\n    line-height: 14pt;\r\n    font-weight: 200;\r\n    padding: 10px;\r\n    color: #333;\r\n    border: 1px solid #cdcdcd;\r\n    background: #fff;\r\n    box-shadow: inset rgba(0, 0, 0, .05) 0 3px 10px;\r\n    border-radius: 3px;\r\n    transition: all 0.2s ease-in-out;\r\n    appearance: none;\r\n    -moz-appearance: none;\r\n    -webkit-appearance: none;\r\n    max-width: 100%;\r\n    max-height: 100%;\r\n}\r\n\r\n.editor_group .code_textarea:focus {\r\n    border-color: #33dd33;\r\n}\r\n\r\n.editor_group .code_textarea.js {\r\n    margin: 15px 0 0 0;\r\n}\r\n\r\n.code_result_iframe {\r\n    width: 100%;\r\n    border: 1px solid #cdcdcd;\r\n    border-radius: 3px;\r\n    min-height: 400px;\r\n    margin: 15px 0 0 0;\r\n}\r\n\r\n@media (min-width: 768px) {\r\n\r\n    body {\r\n        padding: 50px 50px 0 50px;\r\n    }\r\n\r\n    html,\r\n    body,\r\n    .editor_section {\r\n        height: auto;\r\n    }\r\n\r\n}\r\n", ""]);
 
 	// exports
 
@@ -9728,7 +9734,7 @@
 
 	addLegacyProps(CodeMirror)
 
-	CodeMirror.version = "5.22.0"
+	CodeMirror.version = "5.22.2"
 
 	return CodeMirror;
 

@@ -27,7 +27,8 @@ init =
 
 
 type Msg
-    = EditorGroupMsg EditorGroup.Msg
+    = AddNewEditor
+    | EditorGroupMsg EditorGroup.Msg
 
 
 
@@ -37,11 +38,11 @@ type Msg
 view : AppModel -> Html Msg
 view model =
     div [] [
-          Html.map EditorGroupMsg (EditorGroup.view model.editorGroupModel)
-        ]
-
-
-
+         div [] [
+                button [onClick AddNewEditor] [ text "Add new editor" ]
+         ],
+         Html.map EditorGroupMsg (EditorGroup.view model.editorGroupModel)
+    ]
 
 -- UPDATE
 
@@ -49,6 +50,9 @@ view model =
 update : Msg -> AppModel -> ( AppModel, Cmd Msg )
 update msg model =
     case msg of
+        AddNewEditor ->
+            Debug.log "add new editor"
+            (model, Cmd.none)
         EditorGroupMsg subMsg ->
           let
                ( updatedEditorGroupModel, editorGroupCmd ) =

@@ -4,7 +4,6 @@ import Html exposing (..)
 import Html.Attributes exposing ( .. )
 import Html.Events exposing (..)
 import Debug exposing (..)
-
 -- MODEL
 
 type alias Model =
@@ -31,6 +30,7 @@ type Msg
     | ChangedHTML String
     | ChangedCSS String
     | ChangedJS String
+    | ClearAll
 
 
 
@@ -50,17 +50,21 @@ view model =
 
 editorGroup : Model -> Html Msg
 editorGroup model =
-   div [ class "editor-group" ] [
-       div [] [
-           textarea [ class "html code-textarea", cols 40, rows 10, placeholder "HTML", value model.html, onInput ChangedHTML ] [],
-           textarea [ class "css code-textarea", cols 40, rows 10, placeholder "CSS", value model.css, onInput ChangedCSS ] [],
-           textarea [ class "js code-textarea", cols 40, rows 10, placeholder "JS", value model.js, onInput ChangedJS ] []
-       ],
-       div [] [
-           iframe [iframeStyle, class "code-result_iframe", seamless <| True, srcdoc <| getFinalResult <| model] [],
-           text <| model.html
-       ]
-       ]
+    section [class "editor_section"] [
+         div [ class "editor_group" ] [
+             div [class "editor_buttons"] [
+                button [ class "", onClick ClearAll ] [ text "Clear" ]
+             ],
+             div [ class "editor_textareas" ] [
+                 textarea [ class "html code_textarea", cols 40, rows 10, placeholder "HTML", value model.html, onInput ChangedHTML ] [],
+                 textarea [ class "css code_textarea", cols 40, rows 10, placeholder "CSS", value model.css, onInput ChangedCSS ] [],
+                 textarea [ class "js code_textarea", cols 40, rows 10, placeholder "JS", value model.js, onInput ChangedJS ] []
+             ],
+             div [ class "editor_iframe" ] [
+                 iframe [iframeStyle, class "code_result_iframe", seamless <| True, srcdoc <| getFinalResult <| model] []
+             ]
+         ]
+    ]
 
 getFinalResult: Model -> String
 getFinalResult model =
@@ -78,3 +82,5 @@ update message model =
             ( { model | css = changes }, Cmd.none )
         (ChangedJS changes) ->
             ( { model | js = changes } , Cmd.none )
+        ClearAll ->
+            ( { model | html="", css="", js="" }, Cmd.none)
