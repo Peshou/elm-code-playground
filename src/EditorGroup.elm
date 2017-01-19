@@ -1,9 +1,10 @@
-module EditorGroup exposing (..)
+port module EditorGroup exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing ( .. )
 import Html.Events exposing (..)
 import Debug exposing (..)
+import Keyboard exposing (..)
 -- MODEL
 
 type alias Model =
@@ -15,8 +16,8 @@ type alias Model =
 
 initialModel : Model
 initialModel =
-    { html = "<h1>AJDE</h1>",
-      css = "h1 {color: #fff;background-color: #000;height: 100px;width: auto;}",
+    { html = "<h1>Preview result here!</h1>",
+      css = "",
       js = ""
     }
 
@@ -44,7 +45,7 @@ iframeStyle =
 
 view : Model -> Html Msg
 view model =
-    div []
+    div [ class "editor" ]
         [ editorGroup model
         ]
 
@@ -68,7 +69,7 @@ editorGroup model =
 
 getFinalResult: Model -> String
 getFinalResult model =
-    String.concat["<style>",model.css,"</style>","<script>",model.js,"</script>", model.html]
+    String.concat[model.html,"<style>",model.css,"</style>","<script>",model.js,"</script>"]
 
 -- UPDATE
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -84,3 +85,4 @@ update message model =
             ( { model | js = changes } , Cmd.none )
         ClearAll ->
             ( { model | html="", css="", js="" }, Cmd.none)
+
