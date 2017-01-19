@@ -15,13 +15,17 @@ var Elm = require('./Main.elm');
 
 var app = Elm.Main.embed(document.getElementById("main"));
 
-var elements = document.getElementsByClassName('code-textarea');
-for (var i = 0; i < elements.length; ++i) {
-    console.log(elements[i]);
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('load');
+    var elements = document.getElementsByClassName('code_textarea');
+    for (var i = 0; i < elements.length; ++i) {
+        console.log(elements[i]);
+        editor(elements[i]);
+    }
+});
 
-    CodeMirror.fromTextArea((elements[i]), {
-        lineNumbers: true,
-        theme: 'material'
+function editor(textarea) {
+    CodeMirror.fromTextArea(textarea, {
+        lineNumbers: true
     });
 }
-

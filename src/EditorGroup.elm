@@ -53,7 +53,7 @@ editorGroup model =
     section [class "editor_section"] [
          div [ class "editor_group" ] [
              div [class "editor_buttons"] [
-                button [ class "", onClick ClearAll ] [ text "Clear" ]
+                button [ class "clearLink", onClick ClearAll ] [ text "Clear" ]
              ],
              div [ class "editor_textareas" ] [
                  textarea [ class "html code_textarea", cols 40, rows 10, placeholder "HTML", value model.html, onInput ChangedHTML ] [],
