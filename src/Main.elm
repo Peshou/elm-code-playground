@@ -88,6 +88,7 @@ getEditorSize dict =
 getNewIndex: Int -> String
 getNewIndex index =
     "editor" ++ (toString <| index)
+
 -- PORTS
 port newEditorAdded: String -> Cmd msg
 
