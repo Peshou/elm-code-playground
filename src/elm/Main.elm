@@ -3,7 +3,7 @@ port module Main exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing ( .. )
 import Html.Events exposing (..)
-import EditorGroup exposing (..)
+import Components.EditorGroup as EditorGroup
 import Dict exposing (..)
 -- MODEL
 type alias AppModel =
@@ -42,9 +42,16 @@ view : AppModel -> Html Msg
 view model =
     div []
          ([div [] [
-                button [onClick AddNewEditor] [ text "Add new editor" ]
-           ]
+            a [ class "add_new_editor_button", onClick AddNewEditor ] [
+                div [ class "button-fill grey" ] [
+                    div [ class "button-text" ] [ text "Add new editor" ],
+                    div [ class "button-inside" ] [
+                        div [ class "inside-text" ][ text "Add new editor" ]
+                    ]
+                ]
+            ]
          ]
+    ]
          ++(model.editorGroups
             |> Dict.toList
             |> List.map

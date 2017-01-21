@@ -1,9 +1,8 @@
-port module EditorGroup exposing (..)
+module Components.EditorGroup exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing ( .. )
 import Html.Events exposing (..)
-import Debug exposing (..)
 import Keyboard exposing (..)
 -- MODEL
 
