@@ -127,7 +127,11 @@ if (TARGET_ENV === 'production') {
         },
 
         plugins: [
-            new CopyWebpackPlugin([]),
+            new CopyWebpackPlugin([
+                {
+                    from: 'src/favicon.ico'
+                }
+            ]),
 
             new webpack.optimize.OccurenceOrderPlugin(),
 
