@@ -3,9 +3,8 @@ module Components.EditorGroup exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing ( .. )
 import Html.Events exposing (..)
-import Keyboard exposing (..)
--- MODEL
 
+-- MODEL
 type alias Model =
     { html: String
     , css: String
@@ -23,8 +22,6 @@ initialModel =
 
 
 -- MESSAGES
-
-
 type Msg
     = NoOp
     | ChangedHTML String
@@ -53,15 +50,22 @@ editorGroup model =
     section [class "editor_section"] [
          div [ class "editor_group" ] [
              div [class "editor_buttons"] [
-                button [ class "clearLink", onClick ClearAll ] [ text "Clear" ]
+                a [ class "clearLink", onClick ClearAll ] [
+                                div [ class "button-fill grey" ] [
+                                    div [ class "button-text" ] [ text "Clear" ],
+                                    div [ class "button-inside" ] [
+                                        div [ class "inside-text" ][ text "Clear" ]
+                                    ]
+                                ]
+                            ]
              ],
              div [ class "editor_textareas" ] [
-                 textarea [ class "html code_textarea", cols 40, rows 10, placeholder "HTML", value model.html, onInput ChangedHTML ] [],
-                 textarea [ class "css code_textarea", cols 40, rows 10, placeholder "CSS", value model.css, onInput ChangedCSS ] [],
-                 textarea [ class "js code_textarea", cols 40, rows 10, placeholder "JS", value model.js, onInput ChangedJS ] []
+                 textarea [ class "html code_textarea", cols 40, rows 10, placeholder "Insert HTML here!", value model.html, onInput ChangedHTML ] [],
+                 textarea [ class "css code_textarea", cols 40, rows 10, placeholder "Insert CSS here!", value model.css, onInput ChangedCSS ] [],
+                 textarea [ class "js code_textarea", cols 40, rows 10, placeholder "Insert JS here!", value model.js, onInput ChangedJS ] []
              ],
              div [ class "editor_iframe" ] [
-                 iframe [iframeStyle, class "code_result_iframe", seamless <| True, srcdoc <| getFinalResult <| model] []
+                 iframe [iframeStyle, class "code_result_iframe", sandbox "allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-modals allow-forms", seamless <| True, srcdoc <| getFinalResult <| model] []
              ]
          ]
     ]

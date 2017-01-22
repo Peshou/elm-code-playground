@@ -46,23 +46,23 @@ body {
   text-align: right;
 }
 
-.clearLink {
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  text-shadow: 1px 1px 3px #666666;
-  font-family: Courier New, serif;
-  color: #ffffff;
-  font-size: 16px;
-  background: #3498db;
-  padding: 5px 10px 5px 10px;
-  text-decoration: none;
-}
-
-.clearLink:hover {
-  background: #3cb0fd;
-  text-decoration: none;
-}
+//.clearLink {
+//  -webkit-border-radius: 0;
+//  -moz-border-radius: 0;
+//  border-radius: 0;
+//  text-shadow: 1px 1px 3px #666666;
+//  font-family: Courier New, serif;
+//  color: #ffffff;
+//  font-size: 16px;
+//  background: #3498db;
+//  padding: 5px 10px 5px 10px;
+//  text-decoration: none;
+//}
+//
+//.clearLink:hover {
+//  background: #3cb0fd;
+//  text-decoration: none;
+//}
 
 .editor_group .code_textarea {
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
@@ -108,7 +108,7 @@ body {
 }
 
 .CodeMirror {
-  width: 32%;
+  width: 30%;
   display: inline-block;
   float: left;
   max-width: 100%;
@@ -159,7 +159,7 @@ body {
 }
 
 .button-inside {
-  width: 0px;
+  width: 0;
   height: 54px;
   margin: 0;
   float: left;
@@ -179,7 +179,7 @@ body {
 
 .button-inside.full {
   width: 100%;
-  left: 0%;
+  left: 0;
   top: 0;
   margin-right: -50px;
   border: 1px solid #445561;

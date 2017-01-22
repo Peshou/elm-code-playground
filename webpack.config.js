@@ -24,6 +24,12 @@ var commonConfig = {
     },
 
     resolve: {
+        alias: {
+            // bind version of jquery-ui
+            "jquery-ui": "jquery-ui-bundle/jquery-ui.js",
+            // bind to modules;
+            modules: path.join(__dirname, "node_modules")
+        },
         extensions: ['', '.js', '.elm', '.css']
     },
 
@@ -33,7 +39,8 @@ var commonConfig = {
             {
                 test: /\.(eot|ttf|woff|woff2|svg)$/,
                 loader: 'file-loader'
-            }
+            },
+            {test: /\.(jpe?g|png|gif)$/i, loader: "file-loader"},
         ]
     },
 
@@ -42,6 +49,11 @@ var commonConfig = {
             template: 'src/static/index.html',
             inject: 'body',
             filename: 'index.html'
+        }),
+        new webpack.ProvidePlugin({
+            "$": "jquery",
+            "jQuery": "jquery",
+            "window.jQuery": "jquery"
         })
     ],
 
