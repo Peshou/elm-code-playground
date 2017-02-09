@@ -66,10 +66,7 @@ function createCodeMirrorEditor(textarea) {
             editor.setSize($(this).width(), $(this).height());
         }
     });
-
-
 }
-
 
 function getModeFromTextarea(element) {
     if (jQuery(element).hasClass("html")) {
